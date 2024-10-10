@@ -34,21 +34,13 @@ func TestDetermineLookupNetwork(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		result := determineLookupNetwork(test.input)
-		if result != test.expected {
+		result, err := determineLookupNetwork(test.input)
+		if err != nil {
+			t.Errorf("determineLookupNetwork(%s) returned error: %v", test.input, err)
+		} else if result != test.expected {
 			t.Errorf("determineLookupNetwork(%s) = %s; expected %s", test.input, result, test.expected)
 		}
 	}
-}
-
-func TestDetermineLookupNetworkInvalidInput(t *testing.T) {
-	defer func() {
-		if r := recover(); r == nil {
-			t.Errorf("determineLookupNetwork did not panic on invalid input")
-		}
-	}()
-
-	determineLookupNetwork("invalid_input")
 }
 
 func TestMMDBReader(t *testing.T) {
@@ -82,5 +74,12 @@ func TestMMDBLookup(t *testing.T) {
 		if (err != nil) || (string(recordJson) != string(expectedJson)) {
 			t.Errorf("TestMMDBLookup() = %v; want %v", string(recordJson), string(expectedJson))
 		}
+	}
+}
+
+func TestDetermineLookupNetworkInvalidInput(t *testing.T) {
+	_, err := determineLookupNetwork("invalid_input")
+	if err == nil {
+		t.Errorf("determineLookupNetwork did not return an error on invalid input")
 	}
 }
