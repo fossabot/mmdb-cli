@@ -1,31 +1,4 @@
 
 changelog:
   disable: false
-
-  use: github
-
-  # format: "{{.SHA}}: {{.Message}} (@{{.AuthorUsername}})"
-
-  sort: asc
-
-  groups:
-    - title: Features
-      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
-      order: 0
-    - title: "Fixes"
-      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
-      order: 1
-    - title: "Maintenance"
-      regexp: '^.*?chore(\([[:word:]]+\))??!?:.+$'
-      order: 2
-    - title: "Documentation"
-      regexp: '^.*?docs(\([[:word:]]+\))??!?:.+$'
-      order: 3
-    - title: "Refactor"
-      regexp: '^.*?refactor(\([[:word:]]+\))??!?:.+$'
-      order: 4
-    - title: "Performance"
-      regexp: '^.*?perf(\([[:word:]]+\))??!?:.+$'
-      order: 5
-    - title: Others
-      order: 999
+  use: github-native
