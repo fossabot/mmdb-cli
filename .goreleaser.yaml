@@ -1,0 +1,53 @@
+builds:
+  - #
+    # ID of the build.
+    #
+    # Default: Project directory name.
+    id: "mmdb-cli"
+
+    # GOOS list to build for.
+    # For more info refer to: https://go.dev/doc/install/source#environment
+    #
+    # Default: [ 'darwin', 'linux', 'windows' ].
+    goos:
+      - linux
+      - darwin
+      - freebsd
+      - windows
+
+    # GOARCH to build for.
+    # For more info refer to: https://go.dev/doc/install/source#environment
+    #
+    # Default: [ '386', 'amd64', 'arm64' ].
+    goarch:
+      - amd64
+      - arm
+      - arm64
+
+    # GOARM to build for when GOARCH is arm.
+    # For more info refer to: https://go.dev/doc/install/source#environment
+    #
+    # Default: [ 6 ].
+    goarm:
+      - 6
+      - 7
+
+    # GOAMD64 to build when GOARCH is amd64.
+    # For more info refer to: https://go.dev/doc/install/source#environment
+    #
+    # Default: [ 'v1' ].
+    goamd64:
+      - v2
+      - v3
+
+    # List of combinations of GOOS + GOARCH + GOARM to ignore.
+    ignore:
+      - goos: darwin
+        goarch: 386
+      - goos: linux
+        goarch: arm
+        goarm: 7
+      - goarm: mips64
+      - gomips: hardfloat
+      - goamd64: v4
+
